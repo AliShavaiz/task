@@ -15,7 +15,7 @@ from .task import print_task_name
 # from SelteqTask.celery import add
 
 class TaskList(APIView):
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     def get(self, request, format=None):
         snippets = Task.objects.all()
         serializer = TaskSerializer(snippets, many=True)
