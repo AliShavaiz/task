@@ -1,9 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
-
-
-# views.py
 from .models import Task
 from .serializers import TaskSerializer
 from django.http import Http404
@@ -12,7 +8,6 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from .task import print_task_name
-# from SelteqTask.celery import add
 
 class TaskList(APIView):
     permission_classes = [IsAuthenticated]
@@ -33,5 +28,4 @@ class TaskList(APIView):
             "user": task.user.username 
         }
             return Response(response_data, status=status.HTTP_201_CREATED)
-            # return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
